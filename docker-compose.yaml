@@ -1,18 +1,18 @@
 services:
   mysql:
-    container_name: springboot_template_mysql
+    container_name: orm_examples_mysql
     image: mysql:8
     ports:
       - '3306:3306'
     environment:
       TZ: 'Asia/Seoul'
-      MYSQL_DATABASE: springboot_template
+      MYSQL_DATABASE: orm_examples
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     volumes:
       - ./infra/mysql/data:/var/lib/mysql
     networks:
-      - springboot-template
+      - orm-examples
 networks:
-  springboot-template:
-    name: springboot-template
+  orm-examples:
+    name: orm-examples
     driver: bridge

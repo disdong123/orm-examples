@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/springboot_template
+    url: jdbc:mysql://localhost:3306/orm_examples
     username: root
     password:
   jpa:
