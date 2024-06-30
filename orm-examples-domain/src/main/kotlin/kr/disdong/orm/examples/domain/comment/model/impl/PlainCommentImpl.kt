@@ -8,6 +8,6 @@ class PlainCommentImpl(
     override val postId: Long,
     override val userId: Long,
     override val content: String,
-    override val createdAt: LocalDateTime,
-    override val updatedAt: LocalDateTime
+    override val createdAt: LocalDateTime = LocalDateTime.now(),
+    override val updatedAt: LocalDateTime = LocalDateTime.now(),
 ) : PlainComment

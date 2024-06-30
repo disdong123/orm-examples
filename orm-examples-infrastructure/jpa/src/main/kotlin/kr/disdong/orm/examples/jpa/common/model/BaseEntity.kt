@@ -4,18 +4,18 @@ import jakarta.persistence.Column
 import jakarta.persistence.MappedSuperclass
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
-import java.time.ZonedDateTime
+import java.time.LocalDateTime
 
 @MappedSuperclass
 abstract class BaseEntity(
     @Column
-    var isDeleted: Boolean = false,
+    val isDeleted: Boolean = false,
 
     @Column
     @CreatedDate
-    var createdAt: ZonedDateTime = ZonedDateTime.now(),
+    val createdAt: LocalDateTime = LocalDateTime.now(),
 
     @Column
     @LastModifiedDate
-    var updatedAt: ZonedDateTime = ZonedDateTime.now(),
+    val updatedAt: LocalDateTime = LocalDateTime.now(),
 )

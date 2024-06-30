@@ -8,6 +8,6 @@ class PlainPostImpl(
     override val authorId: Long,
     override val title: String,
     override val content: String,
-    override val createdAt: LocalDateTime,
-    override val updatedAt: LocalDateTime
+    override val createdAt: LocalDateTime = LocalDateTime.now(),
+    override val updatedAt: LocalDateTime = LocalDateTime.now(),
 ) : PlainPost
