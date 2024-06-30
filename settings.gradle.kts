@@ -1,11 +1,11 @@
-rootProject.name = "springboot-template"
+rootProject.name = "orm-examples"
 
 include(
-    "template-domain",
-    "template-infrastructure:jpa",
-    "template-infrastructure:feign",
-    "template-common",
-    "template-server"
+    "orm-examples-domain",
+    "orm-examples-infrastructure:jpa",
+    "orm-examples-infrastructure:exposed",
+    "orm-examples-common",
+    "orm-examples-server"
 )
 
 enableFeaturePreview("VERSION_CATALOGS")
