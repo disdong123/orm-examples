@@ -13,6 +13,8 @@ class CommentImpl(
         get() = entity.postId
     override val userId: Long
         get() = entity.userId
+    override val parentId: Long?
+        get() = entity.parentId
     override val content: String
         get() = entity.content
     override val createdAt: LocalDateTime

@@ -18,4 +18,8 @@ class CommentRepositoryImpl(
     override fun save(comment: PlainComment): Comment {
         return commentJpaRepository.save(CommentEntity.of(comment)).toComment()
     }
+
+    override fun saveAll(comments: List<PlainComment>): List<Comment> {
+        return commentJpaRepository.saveAll(comments.map { CommentEntity.of(it) }).map { it.toComment() }
+    }
 }

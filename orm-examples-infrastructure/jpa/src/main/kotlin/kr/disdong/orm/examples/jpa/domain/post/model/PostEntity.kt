@@ -3,6 +3,7 @@ package kr.disdong.orm.examples.jpa.domain.post.model
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import kr.disdong.orm.examples.domain.post.model.PlainPost
 import kr.disdong.orm.examples.domain.post.model.Post
@@ -12,7 +13,7 @@ import kr.disdong.orm.examples.jpa.domain.post.model.impl.PostImpl
 @Entity(name = "post")
 class PostEntity(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
 
     @Column
