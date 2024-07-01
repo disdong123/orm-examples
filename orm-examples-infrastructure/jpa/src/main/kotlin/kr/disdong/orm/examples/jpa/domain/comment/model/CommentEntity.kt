@@ -33,6 +33,28 @@ class CommentEntity(
                 content = comment.content,
             )
         }
+
+        /**
+         *
+         */
+        fun tree(entities: List<CommentEntity>): List<Comment> {
+            val commentMap = entities.associateBy { it.id }
+                .mapValues { (_, entity) ->
+                    CommentImpl(entity)
+                }
+
+            val rootComments = mutableListOf<Comment>()
+
+            commentMap.values.forEach { comment ->
+                if (comment.parentId == null) {
+                    rootComments.add(comment)
+                } else {
+                    commentMap[comment.parentId]?.replies?.add(comment)
+                }
+            }
+
+            return rootComments
+        }
     }
 
     fun toComment(): Comment {

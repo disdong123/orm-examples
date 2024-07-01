@@ -21,4 +21,6 @@ class CommentImpl(
         get() = entity.createdAt
     override val updatedAt: LocalDateTime
         get() = entity.updatedAt
+    override val replies: MutableList<Comment> =
+        mutableListOf()
 }

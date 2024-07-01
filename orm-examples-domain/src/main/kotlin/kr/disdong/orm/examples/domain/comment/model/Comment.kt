@@ -3,7 +3,9 @@ package kr.disdong.orm.examples.domain.comment.model
 import java.time.LocalDateTime
 
 interface PlainComment : CommentData
-interface Comment : CommentData
+interface Comment : CommentData {
+    val replies: List<Comment>
+}
 
 interface CommentData {
     val id: Long
