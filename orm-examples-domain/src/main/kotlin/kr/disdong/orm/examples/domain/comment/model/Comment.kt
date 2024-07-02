@@ -16,3 +16,13 @@ interface CommentData {
     val createdAt: LocalDateTime
     val updatedAt: LocalDateTime
 }
+
+interface CommentView {
+    val id: Long
+    val postId: Long
+    val userId: Long
+    val name: String
+    val content: String
+    val replies: List<CommentView>
+    val createdAt: LocalDateTime
+}

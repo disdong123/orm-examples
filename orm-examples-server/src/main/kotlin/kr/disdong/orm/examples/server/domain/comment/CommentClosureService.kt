@@ -11,23 +11,31 @@ import kr.disdong.orm.examples.domain.post.repository.PostRepository
 import kr.disdong.orm.examples.domain.user.model.User
 import kr.disdong.orm.examples.domain.user.model.impl.PlainUserImpl
 import kr.disdong.orm.examples.domain.user.repository.UserRepository
+import kr.disdong.orm.examples.jpa.domain.comment.repository.CommentJpaRepository
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Service
 
 @Service
-class CommentService(
+class CommentClosureService(
     private val userRepository: UserRepository,
     private val postRepository: PostRepository,
-    @Qualifier("commentRepositoryImpl")
+    @Qualifier("commentClosureRepositoryImpl")
     private val commentRepository: CommentRepository,
+    private val commentJpaRepository: CommentJpaRepository,
 ) {
 
     fun comments(postId: Long) {
         seed()
-        val comments = commentRepository.findAllByPostId(postId)
         val om = ObjectMapper()
         om.registerModules(JavaTimeModule())
-        println(om.writeValueAsString(comments))
+        println(om.writeValueAsString(commentRepository.findCommentViewsByPostId(postId)))
+        println(om.writeValueAsString(commentRepository.findCommentViewsByPostId(1, 10, null)))
+        // TODO 바로 하위의 댓글만 조회된다.
+        //  넣을때 1-2, 2-3 이 연결되어 있으면 path 에는 1-1, 1-2, 1-3, 2-2, 2-3, 3-3 이렇게 전부 넣어야 한다.
+        //  지금은 1-1, 1-2, 2-2, 2-3, 3-3 만 넣고 있어서 1로 조회 했을 때 2만 나온다.
+        //  다른 방법으로는 계층으로 하지 말고 단순히 1-2 1-3 으로 플랫하게 할 수 있을것같다. 유튜브처럼.
+        //  replycount 는 컬럼을 만드는게 낫지 않을까?
+        println(om.writeValueAsString(commentRepository.findCommentViewRepliesById(1, 10, null)))
     }
 
     private fun seed() {

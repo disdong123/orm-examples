@@ -3,6 +3,7 @@ package kr.disdong.orm.examples.server
 import kr.disdong.orm.examples.common.logger.logger
 import kr.disdong.orm.examples.domain.DomainApplication
 import kr.disdong.orm.examples.jpa.JpaApplication
+import kr.disdong.orm.examples.server.domain.comment.CommentClosureService
 import kr.disdong.orm.examples.server.domain.comment.CommentService
 import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional
 @Import(DomainApplication::class, JpaApplication::class)
 class ServerApplication(
     private val commentService: CommentService,
+    private val commentClosureService: CommentClosureService,
 ) : ApplicationRunner {
     private val logger = logger<ServerApplication>()
 
@@ -22,7 +24,8 @@ class ServerApplication(
     override fun run(args: ApplicationArguments?) {
         logger.info("run...")
 
-        commentService.comments(1)
+        // commentService.comments(1)
+        commentClosureService.comments(1)
     }
 }
 
