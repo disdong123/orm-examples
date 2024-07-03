@@ -2,6 +2,7 @@ package kr.disdong.orm.examples.server
 
 import kr.disdong.orm.examples.common.logger.logger
 import kr.disdong.orm.examples.domain.DomainApplication
+import kr.disdong.orm.examples.exposed.ExposedApplication
 import kr.disdong.orm.examples.jpa.JpaApplication
 import kr.disdong.orm.examples.server.domain.comment.CommentClosureService
 import kr.disdong.orm.examples.server.domain.comment.CommentService
@@ -13,7 +14,7 @@ import org.springframework.context.annotation.Import
 import org.springframework.transaction.annotation.Transactional
 
 @SpringBootApplication
-@Import(DomainApplication::class, JpaApplication::class)
+@Import(DomainApplication::class, JpaApplication::class, ExposedApplication::class)
 class ServerApplication(
     private val commentService: CommentService,
     private val commentClosureService: CommentClosureService,
