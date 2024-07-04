@@ -2,6 +2,7 @@ package kr.disdong.orm.examples.server
 
 import kr.disdong.orm.examples.common.logger.logger
 import kr.disdong.orm.examples.domain.DomainApplication
+import kr.disdong.orm.examples.domain.user.repository.UserRepository
 import kr.disdong.orm.examples.jpa.JpaApplication
 import kr.disdong.orm.examples.server.domain.comment.CommentClosureService
 import kr.disdong.orm.examples.server.domain.comment.CommentService
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional
 class ServerApplication(
     private val commentService: CommentService,
     private val commentClosureService: CommentClosureService,
+    private val userRepository: UserRepository,
 ) : ApplicationRunner {
     private val logger = logger<ServerApplication>()
 
@@ -26,6 +28,9 @@ class ServerApplication(
 
         // commentService.comments(1)
         commentClosureService.comments(1)
+        kr.disdong.orm.examples.exposed.domain.user.model.userRepository.find()
+        kr.disdong.orm.examples.exposed.domain.user.model.userRepository.delete()
+        kr.disdong.orm.examples.exposed.domain.user.model.userRepository.find()
     }
 }
 

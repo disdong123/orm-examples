@@ -5,6 +5,7 @@ server:
 spring:
   config:
     import:
+      - exposed-mysql.yaml
       - jpa-mysql.yaml
 
 springdoc:

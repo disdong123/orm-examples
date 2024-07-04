@@ -5,9 +5,16 @@ spring:
     username: root
     password:
   jpa:
+#    show-sql: true
     open-in-view: false
     database: mysql
     database-platform: org.hibernate.dialect.MySQLDialect
     generate-ddl: true
     hibernate:
       ddl-auto: create
+#      show_sql: true
+
+#logging:
+#  level:
+#    org.hibernate.SQL: debug # logger에 출력하려면
+#    org.hibernate.type.descriptor.sql: trace # 파라미터 값 출력
