@@ -2,7 +2,8 @@ package kr.disdong.orm.examples.server
 
 import kr.disdong.orm.examples.common.logger.logger
 import kr.disdong.orm.examples.domain.DomainApplication
-import kr.disdong.orm.examples.domain.user.model.impl.PlainUserImpl
+import kr.disdong.orm.examples.domain.post.model.impl.PlainPostImpl
+import kr.disdong.orm.examples.domain.post.repository.PostRepository
 import kr.disdong.orm.examples.domain.user.repository.UserRepository
 import kr.disdong.orm.examples.exposed.ExposedApplication
 import kr.disdong.orm.examples.jpa.JpaApplication
@@ -23,6 +24,8 @@ class ServerApplication(
     private val commentClosureService: CommentClosureService,
     @Qualifier("userExposedRepositoryImpl")
     private val userRepository: UserRepository,
+    @Qualifier("postExposedRepositoryImpl")
+    private val postRepository: PostRepository,
 ) : ApplicationRunner {
     private val logger = logger<ServerApplication>()
 
@@ -33,9 +36,10 @@ class ServerApplication(
         // commentService.comments(1)
         // commentClosureService.comments(1)
 
-        val user = userRepository.save(PlainUserImpl(name = "123", phone = "123"))
-        println("${user.id} ${user.name}")
-        println(userRepository.findByUserId(user.id))
+        // val user = userRepository.save(PlainUserImpl(name = "123", phone = "123"))
+        println(userRepository.findByUserId(1000))
+        println(postRepository.save(PlainPostImpl(authorId = 1, title = "123", content = "1234")))
+        println(postRepository.findAllByUserId(1))
     }
 }
 

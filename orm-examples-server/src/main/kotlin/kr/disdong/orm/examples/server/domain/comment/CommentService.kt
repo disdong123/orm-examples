@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service
 class CommentService(
     @Qualifier("userRepositoryImpl")
     private val userRepository: UserRepository,
+    @Qualifier("postRepositoryImpl")
     private val postRepository: PostRepository,
     @Qualifier("commentRepositoryImpl")
     private val commentRepository: CommentRepository,

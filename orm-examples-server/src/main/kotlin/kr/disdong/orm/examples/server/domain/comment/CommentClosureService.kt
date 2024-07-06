@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service
 class CommentClosureService(
     @Qualifier("userRepositoryImpl")
     private val userRepository: UserRepository,
+    @Qualifier("postRepositoryImpl")
     private val postRepository: PostRepository,
     @Qualifier("commentClosureRepositoryImpl")
     private val commentRepository: CommentRepository,
