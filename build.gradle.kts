@@ -62,3 +62,9 @@ subprojects {
         enabled = true
     }
 }
+
+ktlint {
+    filter {
+        exclude("**/build/**")
+    }
+}

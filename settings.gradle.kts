@@ -4,6 +4,8 @@ include(
     "orm-examples-domain",
     "orm-examples-infrastructure:jpa",
     "orm-examples-infrastructure:exposed",
+    // "orm-examples-infrastructure:jooq",
+    "orm-examples-infrastructure:jdbc",
     "orm-examples-common",
     "orm-examples-server"
 )
